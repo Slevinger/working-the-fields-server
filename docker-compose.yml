@@ -1,0 +1,18 @@
+version: "3"
+services:
+  working-the-fields:
+    container_name: working-the-fields
+    image: working-the-fields
+    restart: always
+    build: .
+    ports:
+      - "8081:8081"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27018:27017'
